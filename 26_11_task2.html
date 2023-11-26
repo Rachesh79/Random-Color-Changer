@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 2</title>
+    <style>
+        .container h1,h2{
+            display: flex;
+            margin: auto;
+            justify-content: center;
+        }
+
+        .container h1,h2{
+            font-family: 'Poppins',sans-serif;
+            margin-top: 20px;
+            margin-bottom: 40px;
+        }
+
+        h1{
+            font-size: 40px;
+            color: #f10101;
+        }
+
+        h2{
+            font-size:30px
+        }
+
+        .btn button{
+            padding: 10px ;
+            font-size: 18px;
+            width: 90px;
+            display: inline;
+            text-align: center;
+            margin: 0 50px;
+            border-radius: 10px;
+
+        }
+
+        .btn{
+            display: flex;
+            justify-content: center;
+        }
+
+        .btn button:hover{
+            border: none;
+            /* font-weight: 900; */
+            cursor: pointer;
+            /* transition: 0.2s ease-in-out; */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>
+            Random Color Generator
+        </h1>
+        <h2>
+            Click the button!!!! 
+        </h2>
+    </div>
+    <div class="btn">
+        <button id="start">
+            Start
+        </button>
+        <button id="stop">
+            Stop
+        </button>
+    </div>
+    <script>
+        function randColor(){
+            let color = "#"
+
+            for(let i=0; i<6; i++){
+            let hex = "0123456789ABCDEF"
+            let ran = Math.floor(Math.random()*16)
+             // console.log(hex[ran])
+             color += hex[ran]
+            }
+            return color
+        }
+
+        let setIntv
+
+        document.querySelector('#start').addEventListener('click',function(e){
+            setIntv = setInterval(function(e){
+                document.body.style.backgroundColor = randColor()
+            },800)
+        })
+
+        document.querySelector('#stop').addEventListener('click',function(e){
+            clearInterval(setIntv)
+            setIntv=null
+            
+        })
+
+        document.addEventListener('keydown',function(e){
+            console.log(e.key)
+        })
+
+    </script>
+</body>
+</html>
